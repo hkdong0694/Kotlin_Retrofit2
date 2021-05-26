@@ -14,6 +14,6 @@ import retrofit2.http.Query
 interface MovieInfoOpenApiService {
 
     @GET("/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json")
-    fun getBoxOffice(@Query("key")key: String, @Query("targetDt")target: String ): Call<Result>
+    fun getBoxOffice(@Query("key")key: String, @Query("targetDt")target: String? ): Call<Result>
 
 }

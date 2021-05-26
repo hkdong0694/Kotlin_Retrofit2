@@ -1,5 +1,6 @@
 package com.example.retrofit2.adapter
 
+import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofit2.adapter.holder.DailyOfficeHolder
@@ -10,7 +11,7 @@ import com.example.retrofit2.adapter.holder.DailyOfficeHolder
  * Created by 한경동 (Joel) on 2021/05/26.
  * Description:
  */
-class DailyOfficeAdapter : RecyclerView.Adapter<DailyOfficeHolder>() {
+class DailyOfficeAdapter(context: Context) : RecyclerView.Adapter<DailyOfficeHolder>() {
 
     override fun getItemCount(): Int {
         TODO("Not yet implemented")
