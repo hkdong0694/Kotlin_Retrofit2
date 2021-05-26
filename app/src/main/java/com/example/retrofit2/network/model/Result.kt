@@ -1,5 +1,7 @@
 package com.example.retrofit2.network.model
 
+import java.io.Serializable
+
 /**
  * Retrofit2
  * Class: Result
@@ -8,4 +10,4 @@ package com.example.retrofit2.network.model
  */
 data class Result(
     var boxOfficeResult: BoxOfficeResult
-)
+) : Serializable

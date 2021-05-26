@@ -1,6 +1,9 @@
 package com.example.retrofit2.network
 
+import com.example.retrofit2.network.model.Result
+import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 /**
  * Retrofit2
@@ -10,7 +13,7 @@ import retrofit2.http.GET
  */
 interface MovieInfoOpenApiService {
 
-    // @GET("/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json")
-    // Call<Result>
+    @GET("/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json")
+    fun getBoxOffice(@Query("key")key: String, @Query("targetDt")target: String ): Call<Result>
 
 }
