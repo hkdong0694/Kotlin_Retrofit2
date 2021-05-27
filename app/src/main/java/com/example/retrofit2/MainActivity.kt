@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.retrofit2.adapter.DailyOfficeAdapter
 import com.example.retrofit2.network.Constants
 import com.example.retrofit2.network.MovieInfoOpenApiService
+import com.example.retrofit2.network.model.DailyBoxOfficeList
 import com.example.retrofit2.network.model.Result
 import com.example.retrofit2.repository.MovieListRepository
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         dateInit()
-        adapter = DailyOfficeAdapter(this)
+        adapter = DailyOfficeAdapter()
         repository = MovieListRepository()
         apiInterface = repository?.initBuild()
 
@@ -58,12 +59,15 @@ class MainActivity : AppCompatActivity() {
     private fun boxOfficeSearch() {
         prog.visibility = View.VISIBLE
         apiInterface?.getBoxOffice(Constants.KEY, dateSet)?.enqueue(object :Callback, retrofit2.Callback<Result> {
+            override fun onResponse(call: Call<Result>, response: Response<Result>) {
+                val body = response.body()
+                val list : MutableList<DailyBoxOfficeList>? = body?.boxOfficeResult?.dailyBoxOfficeList
+                if(list != null) adapter?.setData(list)
+                prog.visibility = View.GONE
+            }
             override fun onFailure(call: Call<Result>, t: Throwable) {
                 prog.visibility = View.GONE
                 t.printStackTrace()
-            }
-            override fun onResponse(call: Call<Result>, response: Response<Result>) {
-                prog.visibility = View.GONE
             }
         })
     }
