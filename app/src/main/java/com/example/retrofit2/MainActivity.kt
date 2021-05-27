@@ -47,8 +47,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun dateFormat(year: Int, month: Int, day: Int) : String {
-        var result = ""
-        result =
+        var result =
             if (month <= 9 && day <= 9) year.toString() + "0" + month + "0" + day
             else if (day <= 9) year.toString() + month + "0" + day
             else if (month <= 9) year.toString() + "0" + month + day
@@ -72,4 +71,3 @@ class MainActivity : AppCompatActivity() {
         })
     }
 }
-

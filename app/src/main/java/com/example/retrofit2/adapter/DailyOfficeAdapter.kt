@@ -17,17 +17,11 @@ class DailyOfficeAdapter : RecyclerView.Adapter<DailyOfficeHolder>() {
 
     private var movieList = mutableListOf<DailyBoxOfficeList>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DailyOfficeHolder {
-        var view = LayoutInflater.from(parent.context).inflate(R.layout.dailymovie_item, parent, false)
-        val holder = DailyOfficeHolder(view)
-        return holder
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DailyOfficeHolder = DailyOfficeHolder(LayoutInflater.from(parent.context).inflate(R.layout.dailymovie_item, parent, false))
 
     override fun getItemCount(): Int = movieList.size
 
-    override fun onBindViewHolder(holder: DailyOfficeHolder, position: Int) {
-         holder.onBind(movieList[position])
-    }
+    override fun onBindViewHolder(holder: DailyOfficeHolder, position: Int) = holder.onBind(movieList[position])
 
     fun setData(list: MutableList<DailyBoxOfficeList>) {
         this.movieList = list

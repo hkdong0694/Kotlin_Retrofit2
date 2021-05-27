@@ -21,4 +21,5 @@ class MovieListRepository {
         movieInfoOpenApiService = retrofit?.create(MovieInfoOpenApiService::class.java)
         return movieInfoOpenApiService
     }
+
 }
