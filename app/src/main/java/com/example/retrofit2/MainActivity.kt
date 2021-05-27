@@ -3,6 +3,7 @@ package com.example.retrofit2
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.retrofit2.adapter.DailyOfficeAdapter
 import com.example.retrofit2.network.Constants
 import com.example.retrofit2.network.MovieInfoOpenApiService
@@ -26,14 +27,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         dateInit()
-        //adapter = DailyOfficeAdapter(this)
+        adapter = DailyOfficeAdapter(this)
         repository = MovieListRepository()
         apiInterface = repository?.initBuild()
 
-        //rv_main.layoutManager = LinearLayoutManager(this)
-        //rv_main.adapter = adapter
+        rv_main.layoutManager = LinearLayoutManager(this)
+        rv_main.adapter = adapter
 
-        boxOfficeSearch();
+        boxOfficeSearch()
     }
 
     private fun dateInit() {
@@ -54,7 +55,6 @@ class MainActivity : AppCompatActivity() {
         return result
     }
 
-
     private fun boxOfficeSearch() {
         prog.visibility = View.VISIBLE
         apiInterface?.getBoxOffice(Constants.KEY, dateSet)?.enqueue(object :Callback, retrofit2.Callback<Result> {
@@ -66,10 +66,6 @@ class MainActivity : AppCompatActivity() {
                 prog.visibility = View.GONE
             }
         })
-
-
     }
-
-
 }
 

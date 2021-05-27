@@ -1,9 +1,13 @@
 package com.example.retrofit2.adapter
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.contentValuesOf
 import androidx.recyclerview.widget.RecyclerView
+import com.example.retrofit2.R
 import com.example.retrofit2.adapter.holder.DailyOfficeHolder
+import com.example.retrofit2.network.model.Result
 
 /**
  * Retrofit2
@@ -12,6 +16,7 @@ import com.example.retrofit2.adapter.holder.DailyOfficeHolder
  * Description:
  */
 class DailyOfficeAdapter(context: Context) : RecyclerView.Adapter<DailyOfficeHolder>() {
+
 
     override fun getItemCount(): Int {
         TODO("Not yet implemented")
@@ -22,7 +27,9 @@ class DailyOfficeAdapter(context: Context) : RecyclerView.Adapter<DailyOfficeHol
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DailyOfficeHolder {
-        TODO("Not yet implemented")
+        var view = LayoutInflater.from(parent.context).inflate(R.layout.dailymovielist_item, parent, false)
+        val holder = DailyOfficeHolder(view)
+        return holder
     }
 
 }
